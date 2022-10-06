@@ -82,7 +82,7 @@ button:focus {
     box-shadow: none;
   }
 
-.added{
+.update-msg{
     display: none;
     position:absolute;
     top:30px;right:5px;color:red;

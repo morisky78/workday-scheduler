@@ -31,7 +31,7 @@ $('.saveBtn').on('click', function(){
     var oldText = localStorage.getItem(storageKey);
 
     // this is the <p> to show the updated result message
-    var msgEl = $(this).siblings('.added');
+    var msgEl = $(this).siblings('.update-msg');
 
     if ( txtInserted  == oldText ) {
         msgEl.text('No Change.');   // don't need to update the storage
@@ -39,27 +39,7 @@ $('.saveBtn').on('click', function(){
         msgEl.text('Schedule updated on the local storage✍');
         localStorage.setItem(storageKey, txtInserted);       
     }
-
-
-    // var txtareaId = $(this).siblings( "textarea" ).attr('id');
-    // var txtInserted = $(this).siblings( "textarea" ).val();
-
-    // // get the Local storage data to compare new text
-    // var oldText = localStorage.getItem(txtareaId);
-
-    // // get .added message element by ID
-    // var timeBlockNum = $(this).parent().attr('data-hour');
-    // var addMsgId = '#added-'+timeBlockNum; 
-
-    // // assign the message accordingly and store on localstorage when there is change    
-    // if ( txtInserted  == oldText ) {
-    //     $(addMsgId).text('No Change.');
-    // } else {
-    //     $(addMsgId).text('Schedule updated on the local storage✍');
-    //     localStorage.setItem(txtareaId, txtInserted);
-        
-    // }
-   
+  
     // show the updated message and hide in 1 sec
     msgEl.show();
     setTimeout(function() {
