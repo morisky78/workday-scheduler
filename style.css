@@ -51,7 +51,7 @@ textarea:focus {
   }
   
   .past {
-    background-color: #d3d3d3;
+    background-color: #a8a8a8;
     color: white;
   }
   
@@ -73,12 +73,6 @@ textarea:focus {
     color: white;
     cursor: pointer;
     position: relative;;
-  }
-  
-  .saveBtn i:hover {
-    /* font-size: 20px;
-    transition: all 0.3s ease-in-out; */
-    
   }
   
 
