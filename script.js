@@ -14,14 +14,26 @@ $('.saveBtn').on('click', function(){
     var txtareaId = $(this).siblings( "textarea" ).attr('id');
     localStorage.setItem(txtareaId, txtInserted);
     
-    $('.added').show();
+    // $('.added').show();
+    // setTimeout(function() {
+    //     $('.added').hide();
+    //   }, 1000 );
+    var timeBlockNum = $(this).parent().attr('data-hour');
+    var addMsgId = '#added-'+timeBlockNum; 
+    console.log(addMsgId);
+    console.log($(addMsgId));
+    $(addMsgId).show();
     setTimeout(function() {
-        $('.added').hide();
-      }, 1000 );
-
-    
+        $(addMsgId).hide();
+     }, 1000 );
 
 })
+
+function callback() {
+    setTimeout(function() {
+      $( ".added" ).removeAttr( "style" ).hide().fadeIn();
+    }, 1000 );
+  };
 
 $('.saveBtn').on('mouseover', function(){
     $(this).children().eq(0).removeClass().addClass('far fa-save');
@@ -40,15 +52,19 @@ $.each( timeblockArr, function(){
     
     console.log($(this));
     var textareaEl = $(this).children().eq(1);
-    var timeBlockHour = $(this).attr('data-hour');
+
+    // had to use parseInt to compare the time correctly
+    var timeBlockHour = parseInt($(this).attr('data-hour'));
+    console.log('timeblock: '+timeBlockHour);
+    console.log('thishour: '+thisHour);
 
     if (timeBlockHour == thisHour ) {
         console.log('CURRENT TIME');
         textareaEl.removeClass().addClass('col-10 present');
-    } else if (timeBlockHour > thisHour ) {
+    } else if ( timeBlockHour < thisHour ) {
         console.log('PAST TIME');
         textareaEl.removeClass().addClass('col-10 past');
-    } else {
+    } else if ( timeBlockHour > thisHour ) {
         console.log('FUTURE TIME');
         textareaEl.removeClass().addClass('col-10 future');
     }
