@@ -26,19 +26,21 @@ $('.saveBtn').on('click', function(){
 
     var timeBlockHour = $(this).parent().attr('data-hour');
     var storageKey =  localStoragePrefix+timeBlockHour ;
-
     console.log("key:"+storageKey);
+    
     // get the inserted text
     var txtInserted = $(this).siblings('textarea').val();
-
     // get the Local storage data to compare new text
     var oldText = localStorage.getItem(storageKey);
 
     // this is the <p> to show the updated result message
     var msgEl = $(this).siblings('.update-msg');
 
-    if ( txtInserted  == oldText ) {
-        msgEl.text('No Change');   // don't need to update the storage
+    // when there is no change on textarea
+    // or no storage record and nothing entered
+    if ( (txtInserted == oldText) || (!oldText && !txtInserted)  ) {
+        msgEl.text('No Change');   
+    // if not, store the new data
     } else {
         msgEl.text('Schedule updated on local storage');
         localStorage.setItem(storageKey, txtInserted);       
@@ -52,7 +54,6 @@ $('.saveBtn').on('click', function(){
 
 })
 
-
 // style changes for buttons mouseover / out - 
 // highlight the textarea when the button is mouseovred
 $('.saveBtn').on('mouseover', function(){
@@ -63,7 +64,6 @@ $('.saveBtn').on('mouseout', function(){
     $(this).children('i').removeClass().addClass('fas fa-save');
     $(this).siblings('textarea').css('font-weight','normal');
 })
-
 
 
 // each time-block div, 
