@@ -1,4 +1,7 @@
+// update the Header with current date
 var today = moment();
+$("#currentDay").text(today.format("MMM Do, YYYY"));
+
 // get the hour number in 0-24.
 var thisHour = moment().format('k');
 
@@ -6,14 +9,15 @@ var thisHour = moment().format('k');
 var localStoragePrefix = 'sch-text-';
 
 
-// to refresh every top of the hour
+// To refresh every top of the hour
 var thisMinute = moment().format('m');
+// get remaining minutes until Hour 
 var minutesLeftToRefresh = 60 - thisMinute;
 
 
 console.log(thisHour+':'+thisMinute);
 console.log('minutes left: '+minutesLeftToRefresh);
-$("#currentDay").text(today.format("MMM Do, YYYY"));
+
 
 var clickedHour;
 
@@ -34,9 +38,9 @@ $('.saveBtn').on('click', function(){
     var msgEl = $(this).siblings('.update-msg');
 
     if ( txtInserted  == oldText ) {
-        msgEl.text('No Change.');   // don't need to update the storage
+        msgEl.text('No Change');   // don't need to update the storage
     } else {
-        msgEl.text('Schedule updated on the local storage✍');
+        msgEl.text('Schedule updated on local storage');
         localStorage.setItem(storageKey, txtInserted);       
     }
   
